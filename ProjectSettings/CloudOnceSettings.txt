@@ -1,0 +1,28 @@
+{
+	"AchievementIDs":[
+		{
+			"InternalID":"Test",
+			"AppleID":"",
+			"GoogleID":"CgkI_py27KIbEAIQAg",
+			"AmazonID":""
+		}
+	],
+	"LeaderboardIDs":[
+		{
+			"InternalID":"Leaderboard",
+			"AppleID":"",
+			"GoogleID":"CgkI_py27KIbEAIQAQ",
+			"AmazonID":""
+		}
+	],
+	"CloudVariables":[],
+	"AppleSupported":false,
+	"GoogleSupported":true,
+	"AmazonSupported":false,
+	"AndroidPlatform":"1",
+	"GoogleAppID":"937067122302",
+	"GoogleSetupRun":true,
+	"DebugModeEnabled":false,
+	"Version":"2.4.3",
+	"APIKey":""
+}
