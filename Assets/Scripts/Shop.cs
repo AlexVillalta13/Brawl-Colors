@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class Shop : MonoBehaviour {
 
@@ -167,7 +167,7 @@ public class Shop : MonoBehaviour {
 				GameManager.Instance.StoreCurrencyText.text = "" + Shop.instance.currency;
 
 				GameManager.Instance.numberOfBoughtSkins++;
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, GameManager.Instance.numberOfBoughtSkins + " Skins Bought");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, GameManager.Instance.numberOfBoughtSkins + " Skins Bought");
 			} 
 		}
 		else 

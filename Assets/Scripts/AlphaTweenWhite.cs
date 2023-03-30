@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DemiumGames.AdMobManager;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class AlphaTweenWhite : MonoBehaviour {
 
@@ -26,13 +26,13 @@ public class AlphaTweenWhite : MonoBehaviour {
 		}
 		void Start()
 		{
-			GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,"Splash Screen Loaded");
+			//GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,"Splash Screen Loaded");
 			AdMobManager.Instance.SetOnBannerLoaded (() => {
 			Debug.Log("ON BANNER LOADED"); 
 			if (!AdMobManager.Instance.bannerFirstLoad){
 				AdMobManager.Instance.HideBanner();
 				AdMobManager.Instance.bannerFirstLoad = true; 
-				GameAnalytics.NewDesignEvent("Banner Load");
+				//GameAnalytics.NewDesignEvent("Banner Load");
 
 			}
 			});

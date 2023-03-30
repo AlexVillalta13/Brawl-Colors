@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 	TextMeshProUGUI uiScoreText;
 
 	public GameObject uiHighscore;
-	TextMeshProUGUI uiHighscoreText;
+	[SerializeField] TextMeshProUGUI uiHighscoreText;
 
 	public GameObject uiCurrency;
 	TextMeshProUGUI uiCurrencyText;
@@ -76,7 +76,10 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		uiScoreText = uiScore.GetComponent<TextMeshProUGUI> ();
-		uiHighscoreText = uiHighscore.GetComponent<TextMeshProUGUI> ();
+		if(uiHighscoreText == null)
+        {
+			uiHighscoreText = uiHighscore.GetComponent<TextMeshProUGUI>();
+		}
 		uiCurrencyText = uiCurrency.GetComponent<TextMeshProUGUI> ();
 		uiMainScreenHighscoreText = uiMainScreenHighscore.GetComponent<TextMeshProUGUI> ();
 		uiMainScreenCurrencyText = uiMainScreenCurrency.GetComponent<TextMeshProUGUI> ();
@@ -135,7 +138,7 @@ public class GameManager : MonoBehaviour
 		if (score > highscore) {
 			highscore = score;
 			if (gamesEverPlayed > 1) {
-				GameAnalyticsSDK.GameAnalytics.NewDesignEvent("Highscore ", score);
+				//GameAnalyticsSDK.GameAnalytics.NewDesignEvent("Highscore ", score);
 			}
 		}
 		//persistance.highscore = score;

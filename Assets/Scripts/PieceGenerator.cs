@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class PieceGenerator : MonoBehaviour {
 
@@ -56,19 +56,19 @@ public class PieceGenerator : MonoBehaviour {
 			if (piecesToRecover.Count == 4) {	
 				handTutorialObject.SetPositions (piecesToRecover [0].transform.position, new Vector2 (1, 0.7f));
 
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step3 Tutorial First Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step3 Tutorial First Piece Placed");
 			} else if (piecesToRecover.Count == 3) {
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step3 Tutorial First Piece Placed");
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step4 Tutorial Second Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step3 Tutorial First Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step4 Tutorial Second Piece Placed");
 				handTutorialObject.SetPositions (piecesToRecover [0].transform.position, new Vector2 (-1, -0.4f));
 			} else if (piecesToRecover.Count == 2) {
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step4 Tutorial Second Piece Placed");
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step5 Tutorial Third Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step4 Tutorial Second Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step5 Tutorial Third Piece Placed");
 
 				handTutorialObject.SetPositions (piecesToRecover [0].transform.position, new Vector2 (1, -0.9f));
 			} else if (piecesToRecover.Count == 1) {
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step5 Tutorial Third Piece Placed");
-				GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step6 First Game Finished");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step5 Tutorial Third Piece Placed");
+				//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Start, "Step6 First Game Finished");
 			}
 
 			handTutorialObject.GetComponent<TutorialHand>().RestartHand();

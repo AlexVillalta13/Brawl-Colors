@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 using UnityEngine.UI;
 using DemiumGames.AdMobManager;
 using System;
@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour {
 
 	void Start()
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step1 Splash to Main Screen");
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step1 Splash to Main Screen");
 
 		instance = this;
 		panelStore = canvas.transform.Find ("PanelStore").gameObject;
@@ -107,14 +107,14 @@ public class MenuManager : MonoBehaviour {
 			videoLoaded = true;
 			gameOverRewardButton.SetActive(true);
 			storeRewardButton.SetActive(true);
-			GameAnalytics.NewDesignEvent ("Video Loaded",1);
+			//GameAnalytics.NewDesignEvent ("Video Loaded",1);
 		});
 		AdMobManager.Instance.SetOnRewardFailedToLoad(() => {
 			videoLoaded = false;
 			StartCoroutine(LoadingVideo());
 			if(Application.internetReachability != NetworkReachability.NotReachable)
 			{
-				GameAnalytics.NewDesignEvent ("Video Failed",1);
+				//GameAnalytics.NewDesignEvent ("Video Failed",1);
 			}
 		});
 		//AdMobManager.Instance.LoadVideo ();
@@ -122,24 +122,24 @@ public class MenuManager : MonoBehaviour {
 		AdMobManager.Instance.SetOnBannerFailedToLoad (() => {
 			if(Application.internetReachability != NetworkReachability.NotReachable)
 			{
-				GameAnalytics.NewDesignEvent ("Banner Failed",1);
+				//GameAnalytics.NewDesignEvent ("Banner Failed",1);
 			}
 		});
 		AdMobManager.Instance.SetOnBannerClicked(() => {
-			GameAnalytics.NewDesignEvent ("Banner Clicked",1);
+			//GameAnalytics.NewDesignEvent ("Banner Clicked",1);
 		});
 
 		AdMobManager.Instance.SetOnInterFailedToLoad (() => {
 			if(Application.internetReachability != NetworkReachability.NotReachable)
 			{
-				GameAnalytics.NewDesignEvent ("Inter Failed",1);
+				//GameAnalytics.NewDesignEvent ("Inter Failed",1);
 			}
 		});
 		AdMobManager.Instance.SetOnInterClicked(() => {
-			GameAnalytics.NewDesignEvent ("Inter Clicked",1);
+			//GameAnalytics.NewDesignEvent ("Inter Clicked",1);
 		});
 		AdMobManager.Instance.SetOnInterReturn (() => {
-			GameAnalytics.NewDesignEvent ("Inter Return",1);
+			//GameAnalytics.NewDesignEvent ("Inter Return",1);
 		});
 
 		LoadRewardedVideo ();
@@ -160,7 +160,7 @@ public class MenuManager : MonoBehaviour {
 
 
 
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step2 Play Pressed");
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step2 Play Pressed");
 		PieceGenerator.instance.goingBackToMenu = false;
 		//AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
 		gamesCounter++;
@@ -171,7 +171,7 @@ public class MenuManager : MonoBehaviour {
 
 		AdMobManager.Instance.SetOnInterLoaded (() => {
 
-			GameAnalytics.NewDesignEvent("Loaded Inter");
+			//GameAnalytics.NewDesignEvent("Loaded Inter");
 			//Debug.Log("CARGUË");
 			interAdLoaded = true;
 			//AdMobManager.Instance.ShowInter(); 
@@ -192,7 +192,7 @@ public class MenuManager : MonoBehaviour {
 		menuTitleText.transform.DOScale (new Vector3(0.7f, 0.7f , 0.7f),0.3f).OnComplete(()=>{
 			grid.GetComponent<Grid> ().Appear ();
 		});
-		GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
+		//GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
 		GameManager.Instance.gamePaused = false;
 		
 		panelTitleIcons.SetActive (true);
@@ -217,29 +217,29 @@ public class MenuManager : MonoBehaviour {
 		GameManager.Instance.SavePersistance ();
 
 		if (GameManager.Instance.videosEverWatched >= 50) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "50 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "50 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 40) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "40 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "40 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 30) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "30 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "30 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 20) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "20 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "20 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 15) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "15 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "15 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 10) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "10 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "10 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 5) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "5 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "5 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 4) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "4 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "4 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 3) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "3 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "3 Videos Watched");
 		} else if (GameManager.Instance.videosEverWatched >= 2) {
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "2 Videos Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "2 Videos Watched");
 		} 
 		else 
 		{
-			GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "1 Video Watched");
+			//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "1 Video Watched");
 
 		}
 	}
@@ -250,7 +250,7 @@ public class MenuManager : MonoBehaviour {
 		//LoadRewardedVideo ();
 		StartCoroutine(LoadingVideo());
 		Debug.Log ("NO HE VISTO EL VIDEO ENTERO"); 
-		GameAnalytics.NewDesignEvent ("Video Exited",1);
+		//GameAnalytics.NewDesignEvent ("Video Exited",1);
 		gameOverRewardButton.SetActive (false);
 		storeRewardButton.SetActive (false);
 		videoLoaded = false;
@@ -282,7 +282,7 @@ public class MenuManager : MonoBehaviour {
 		}
 		AdMobManager.Instance.DestroyInter();
 		gamesCounter++;
-		GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
+		//GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
 
 		button.interactable = true;
 		Grid.instance.ResetGrid ();
@@ -472,44 +472,44 @@ public class MenuManager : MonoBehaviour {
 		endGameTime = DateTime.UtcNow;
 		if (gameInterupted == false) {
 			TimeSpan seconds = startGameTime.Subtract (endGameTime);
-			GameAnalytics.NewDesignEvent ("Game Lasted These Seconds", (float)seconds.TotalSeconds);
+			//GameAnalytics.NewDesignEvent ("Game Lasted These Seconds", (float)seconds.TotalSeconds);
 		}
 		gameInterupted = false;
 
 		GameManager.Instance.gamesEverPlayed++;
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step6 First Game Finished");
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "Step6 First Game Finished");
 
 	if(GameManager.Instance.gamesEverPlayed >= 50)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "50 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "50 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 40)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "40 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "40 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 30)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "30 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "30 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 20)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "20 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "20 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 10)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "10 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "10 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 5)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "5 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "5 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 3)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "3 GAMES COMPLETED");	
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "3 GAMES COMPLETED");	
 	}
 	else if(GameManager.Instance.gamesEverPlayed >= 2)
 	{
-		GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "2 GAMES COMPLETED");
+		//GameAnalytics.NewProgressionEvent (GAProgressionStatus.Complete, "2 GAMES COMPLETED");
 	}
 
 
@@ -536,7 +536,7 @@ public class MenuManager : MonoBehaviour {
 		}
 		
 		//AdMobManager.Instance.HideBanner(); 
-		GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("Score", GameManager.Instance.score);
+		//GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("Score", GameManager.Instance.score);
 		//GameAnalyticsSDK.GameAnalytics.NewProgressionEvent (GAProgressionStatus.Fail, "tutorial");
 		GameManager.Instance.gamePaused = true;
 		panelGameOver.SetActive (true);
@@ -593,15 +593,15 @@ public class MenuManager : MonoBehaviour {
 void OnApplicationPause(bool pauseStatus)
 	{
 		if (gamesCounter > 0) {
-			GameAnalytics.NewDesignEvent ("GamesPerSession", gamesCounter);
+			//GameAnalytics.NewDesignEvent ("GamesPerSession", gamesCounter);
 			gamesCounter = 0;
 		}
 		if (sessionGold > 0) {
-			GameAnalytics.NewDesignEvent ("Gold Per Session", sessionGold);
+			//GameAnalytics.NewDesignEvent ("Gold Per Session", sessionGold);
 			sessionGold = 0;
 		}
 		if (videosWatchedPerSession > 0) {
-			GameAnalytics.NewDesignEvent ("Videos Watched per Session", videosWatchedPerSession);
+			//GameAnalytics.NewDesignEvent ("Videos Watched per Session", videosWatchedPerSession);
 			videosWatchedPerSession = 0;
 		}
 	}
