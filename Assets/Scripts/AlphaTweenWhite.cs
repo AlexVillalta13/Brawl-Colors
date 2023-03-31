@@ -27,16 +27,16 @@ public class AlphaTweenWhite : MonoBehaviour {
 		void Start()
 		{
 			//GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete,"Splash Screen Loaded");
-			AdMobManager.Instance.SetOnBannerLoaded (() => {
-			Debug.Log("ON BANNER LOADED"); 
-			if (!AdMobManager.Instance.bannerFirstLoad){
-				AdMobManager.Instance.HideBanner();
-				AdMobManager.Instance.bannerFirstLoad = true; 
-				//GameAnalytics.NewDesignEvent("Banner Load");
+			//AdMobManager.Instance.SetOnBannerLoaded (() => {
+			//Debug.Log("ON BANNER LOADED"); 
+			//if (!AdMobManager.Instance.bannerFirstLoad){
+			//	AdMobManager.Instance.HideBanner();
+			//	AdMobManager.Instance.bannerFirstLoad = true; 
+			//	//GameAnalytics.NewDesignEvent("Banner Load");
 
-			}
-			});
-			AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
+			//}
+			//});
+			//AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
 		}
 
 		// Update is called once per frame

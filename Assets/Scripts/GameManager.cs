@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (score > 15 && interLoaded == false) {
 			interLoaded = true;
-			AdMobManager.Instance.LoadInter ();
+			//AdMobManager.Instance.LoadInter ();
 		}
 		score += pointsToAdd;
 		uiScoreText.text = "" + score;

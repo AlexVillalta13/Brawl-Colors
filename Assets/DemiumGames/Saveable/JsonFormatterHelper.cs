@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 using System;
+using UnityEngine.Networking;
 
 namespace DemiumGames.Saveable
 {
@@ -124,13 +125,14 @@ namespace DemiumGames.Saveable
 
         private static IEnumerator LoadCoroutine<T>(string url, CallBackJson<T> call, bool secure)
         {
+            UnityWebRequest www = new UnityWebRequest(url);
 
-            WWW www = new WWW(url);
+            //WWW www = new WWW(url);
             yield return www;
 
             if (www.error == null)
             {
-                SuccesfullLoad<T>(www.bytes, call, secure);
+                //SuccesfullLoad<T>(www.uploadedBytes, call, secure);
                 www.Dispose();
                 yield break;
 

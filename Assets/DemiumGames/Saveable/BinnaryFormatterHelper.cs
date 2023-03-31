@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-using System.Runtime.Serialization; 
+using System.Runtime.Serialization;
+using UnityEngine.Networking;
 
 namespace DemiumGames.Saveable{
 
@@ -44,19 +45,22 @@ public static class BinnaryFormatterHelper {
 		return Load<T> (Application.persistentDataPath, name, secure); 
 	}
 
-	public static void LoadFromBinnary<T>(this MonoBehaviour obj,string url, CallbackBinnary<T> call, bool secure = false){
+        [System.Obsolete]
+        public static void LoadFromBinnary<T>(this MonoBehaviour obj,string url, CallbackBinnary<T> call, bool secure = false){
 		obj.StartCoroutine (LoadCoroutine<T>  (url, call, secure)); 
 
 	}
 
+        [System.Obsolete]
+        private static IEnumerator LoadCoroutine<T>(string url, CallbackBinnary<T> call, bool secure){
+            //UnityWebRequest www = UnityWebRequest.Get(url);
 
+            WWW www = new WWW(url);
 
-	private static IEnumerator LoadCoroutine<T>(string url, CallbackBinnary<T> call, bool secure){
-		WWW www = new WWW (url); 
+            yield return www;
+            //yield return www.SendWebRequest();
 
-		yield return www; 
-
-		if (www.error == null) {
+            if (www.error == null) {
 			string aux = www.text;
 
 			byte[] byteArr = www.bytes;  

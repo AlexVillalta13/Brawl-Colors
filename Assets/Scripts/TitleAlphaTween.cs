@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleAlphaTween : MonoBehaviour {
 
@@ -17,6 +18,6 @@ public class TitleAlphaTween : MonoBehaviour {
 		}
 
 		void GotoNextSlide() {
-			Application.LoadLevel(nextScene);
+			SceneManager.LoadScene(nextScene);
 		}
 	}

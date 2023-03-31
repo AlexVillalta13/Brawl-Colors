@@ -9,6 +9,11 @@ using System;
 
 public class MenuManager : MonoBehaviour {
 
+	[SerializeField] TestButton testButton;
+
+
+
+
 	public static MenuManager instance; 
 
 	public bool gameInterupted = false;
@@ -103,60 +108,71 @@ public class MenuManager : MonoBehaviour {
 		gameOverRewardButton = panelGameOver.transform.Find ("RewardedVideoButton").gameObject;
 		storeRewardButton = panelStore.transform.Find ("Video_buttonSmall").gameObject;
 
-		AdMobManager.Instance.SetOnRewardLoaded (() => {
-			videoLoaded = true;
-			gameOverRewardButton.SetActive(true);
-			storeRewardButton.SetActive(true);
-			//GameAnalytics.NewDesignEvent ("Video Loaded",1);
-		});
-		AdMobManager.Instance.SetOnRewardFailedToLoad(() => {
-			videoLoaded = false;
-			StartCoroutine(LoadingVideo());
-			if(Application.internetReachability != NetworkReachability.NotReachable)
-			{
-				//GameAnalytics.NewDesignEvent ("Video Failed",1);
-			}
-		});
+		/*
+		 * 
+		 * VIDEO REWARD
+		 * 
+		 * 
+		 * 
+		 */
+
+		//AdMobManager.Instance.SetOnRewardLoaded (() => {
+		//	videoLoaded = true;
+		//	gameOverRewardButton.SetActive(true);
+		//	storeRewardButton.SetActive(true);
+		//	//GameAnalytics.NewDesignEvent ("Video Loaded",1);
+		//});
+		//AdMobManager.Instance.SetOnRewardFailedToLoad(() => {
+		//	videoLoaded = false;
+		//	StartCoroutine(LoadingVideo());
+		//	if(Application.internetReachability != NetworkReachability.NotReachable)
+		//	{
+		//		//GameAnalytics.NewDesignEvent ("Video Failed",1);
+		//	}
+		//});
 		//AdMobManager.Instance.LoadVideo ();
 
-		AdMobManager.Instance.SetOnBannerFailedToLoad (() => {
-			if(Application.internetReachability != NetworkReachability.NotReachable)
-			{
-				//GameAnalytics.NewDesignEvent ("Banner Failed",1);
-			}
-		});
-		AdMobManager.Instance.SetOnBannerClicked(() => {
-			//GameAnalytics.NewDesignEvent ("Banner Clicked",1);
-		});
+		//AdMobManager.Instance.SetOnBannerFailedToLoad (() => {
+		//	if(Application.internetReachability != NetworkReachability.NotReachable)
+		//	{
+		//		//GameAnalytics.NewDesignEvent ("Banner Failed",1);
+		//	}
+		//});
+		//AdMobManager.Instance.SetOnBannerClicked(() => {
+		//	//GameAnalytics.NewDesignEvent ("Banner Clicked",1);
+		//});
 
-		AdMobManager.Instance.SetOnInterFailedToLoad (() => {
-			if(Application.internetReachability != NetworkReachability.NotReachable)
-			{
-				//GameAnalytics.NewDesignEvent ("Inter Failed",1);
-			}
-		});
-		AdMobManager.Instance.SetOnInterClicked(() => {
-			//GameAnalytics.NewDesignEvent ("Inter Clicked",1);
-		});
-		AdMobManager.Instance.SetOnInterReturn (() => {
-			//GameAnalytics.NewDesignEvent ("Inter Return",1);
-		});
+		//AdMobManager.Instance.SetOnInterFailedToLoad (() => {
+		//	if(Application.internetReachability != NetworkReachability.NotReachable)
+		//	{
+		//		//GameAnalytics.NewDesignEvent ("Inter Failed",1);
+		//	}
+		//});
+		//AdMobManager.Instance.SetOnInterClicked(() => {
+		//	//GameAnalytics.NewDesignEvent ("Inter Clicked",1);
+		//});
+		//AdMobManager.Instance.SetOnInterReturn (() => {
+		//	//GameAnalytics.NewDesignEvent ("Inter Return",1);
+		//});
 
 		LoadRewardedVideo ();
 	}
 
 	public void StartGame()
 	{
+		testButton.ChangeColor();
+
 		startGameTime = DateTime.UtcNow;
 		gameInterupted = false;
 
-		if (!bannerLoaded) {
-			AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
-			bannerLoaded = true;
-		}
-		if (!videoLoaded ) {
-			AdMobManager.Instance.LoadVideo ();
-		}
+		
+		//if (!bannerLoaded) {
+		//	AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
+		//	bannerLoaded = true;
+		//}
+		//if (!videoLoaded ) {
+		//	AdMobManager.Instance.LoadVideo ();
+		//}
 
 
 
@@ -164,18 +180,18 @@ public class MenuManager : MonoBehaviour {
 		PieceGenerator.instance.goingBackToMenu = false;
 		//AdMobManager.Instance.LoadBanner (GoogleMobileAds.Api.AdSize.Banner, GoogleMobileAds.Api.AdPosition.Top);
 		gamesCounter++;
-		if (bannerLoaded) {
-			AdMobManager.Instance.ShowBanner(); 
-		}
-		AdMobManager.Instance.LoadInter ();
+		//if (bannerLoaded) {
+		//	AdMobManager.Instance.ShowBanner(); 
+		//}
+		//AdMobManager.Instance.LoadInter ();
 
-		AdMobManager.Instance.SetOnInterLoaded (() => {
+		//AdMobManager.Instance.SetOnInterLoaded (() => {
 
-			//GameAnalytics.NewDesignEvent("Loaded Inter");
-			//Debug.Log("CARGUË");
-			interAdLoaded = true;
-			//AdMobManager.Instance.ShowInter(); 
-		});
+		//	//GameAnalytics.NewDesignEvent("Loaded Inter");
+		//	//Debug.Log("CARGUË");
+		//	interAdLoaded = true;
+		//	//AdMobManager.Instance.ShowInter(); 
+		//});
 
 
 
@@ -262,7 +278,7 @@ public class MenuManager : MonoBehaviour {
 		if(videoLoaded)
 		{		
 			videoLoaded = false;
-			AdMobManager.Instance.ShowVideoAd(RewardFailed, RewardSuccess);
+			//AdMobManager.Instance.ShowVideoAd(RewardFailed, RewardSuccess);
 		}
 	}
 	public void RestartGame(int index) //0 panelLose, 1 panelPause
@@ -271,16 +287,16 @@ public class MenuManager : MonoBehaviour {
 		gameInterupted = false;
 
 		if (videoLoaded == false) {
-			AdMobManager.Instance.LoadVideo ();
+			//AdMobManager.Instance.LoadVideo ();
 		}
 		//PieceGenerator.instance.pieces = 4;
 		GameManager.Instance.gamePaused = false;
 		//PieceGenerator.instance.startingGame_forStar = fa;
 
-		if (bannerLoaded) {
-			AdMobManager.Instance.ShowBanner(); 
-		}
-		AdMobManager.Instance.DestroyInter();
+		//if (bannerLoaded) {
+		//	AdMobManager.Instance.ShowBanner(); 
+		//}
+		//AdMobManager.Instance.DestroyInter();
 		gamesCounter++;
 		//GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
 
@@ -607,13 +623,13 @@ void OnApplicationPause(bool pauseStatus)
 	}
 	public void LoadRewardedVideo()
 	{
-		if (videoLoaded == false) {
-			AdMobManager.Instance.LoadVideo ();
-		} 
+		//if (videoLoaded == false) {
+		//	AdMobManager.Instance.LoadVideo ();
+		//} 
 	}
 	IEnumerator LoadingVideo()
 	{
 		yield return new WaitForSeconds(1);
-		AdMobManager.Instance.LoadVideo ();
+		//AdMobManager.Instance.LoadVideo ();
 	}
 }
