@@ -19,8 +19,8 @@ public class ParticleToUI : MonoBehaviour {
 		posicion = Camera.main.ScreenToWorldPoint(m_RectTransform.transform.position);
 
 		transform.DOMove(posicion, speed, false).OnComplete(() => {
-			point.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.15f).OnComplete(() => {
-				point.transform.DOScale(new Vector3(1, 1, 1), 0.15f).SetEase(Ease.Linear);
+			point.transform.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.1f).OnComplete(() => {
+				point.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetEase(Ease.Linear);
 			}).SetEase(Ease.Linear);
 
 			ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();

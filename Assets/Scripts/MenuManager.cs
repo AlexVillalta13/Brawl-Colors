@@ -9,11 +9,6 @@ using System;
 
 public class MenuManager : MonoBehaviour {
 
-	[SerializeField] TestButton testButton;
-
-
-
-
 	public static MenuManager instance; 
 
 	public bool gameInterupted = false;
@@ -160,8 +155,6 @@ public class MenuManager : MonoBehaviour {
 
 	public void StartGame()
 	{
-		testButton.ChangeColor();
-
 		startGameTime = DateTime.UtcNow;
 		gameInterupted = false;
 
@@ -204,9 +197,10 @@ public class MenuManager : MonoBehaviour {
 		TweenObjects(panelPausedButton, panelPausedButton.GetComponent<PanelScript> ().screenPosition, false, false);
 
 		Grid.instance.ResetGrid ();
-		menuTitleText.transform.DOLocalMoveY (transform.position.y + 878.29f, 0.3f, false);
-		menuTitleText.transform.DOScale (new Vector3(0.7f, 0.7f , 0.7f),0.3f).OnComplete(()=>{
-			grid.GetComponent<Grid> ().Appear ();
+		//menuTitleText.transform.DOLocalMoveY (transform.position.y + 878.29f, 0.3f, false);
+		menuTitleText.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), 0.3f).OnComplete(() =>
+		{
+			grid.GetComponent<Grid>().Appear();
 		});
 		//GameAnalyticsSDK.GameAnalytics.NewDesignEvent ("StartGame", 1);
 		GameManager.Instance.gamePaused = false;
