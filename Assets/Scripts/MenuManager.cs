@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 //using GameAnalyticsSDK;
 using UnityEngine.UI;
-using DemiumGames.AdMobManager;
 using System;
 
 public class MenuManager : MonoBehaviour {
@@ -376,7 +375,7 @@ public class MenuManager : MonoBehaviour {
 		gameInterupted = true;
 		if (GameManager.Instance.tutorialPlayed) {
 			if (bannerLoaded) {
-				AdMobManager.Instance.HideBanner ();
+				//AdMobManager.Instance.HideBanner ();
 			}
 			PieceGenerator.instance.goingBackToMenu = true;
 			PieceGenerator.instance.startingGame_forStar = true;
@@ -401,7 +400,7 @@ public class MenuManager : MonoBehaviour {
 	public void ResumeGame()
 	{	
 		if (bannerLoaded) {
-			AdMobManager.Instance.ShowBanner ();
+			//AdMobManager.Instance.ShowBanner ();
 		}
 		panelPaused.transform.DOKill ();
 		panelHomeButton.transform.DOKill ();
@@ -525,7 +524,7 @@ public class MenuManager : MonoBehaviour {
 
 	//GameAnalytics.NewProgressionEvent (GAProgressionStatus.S, "Step6 First Game Finished");
 		if (bannerLoaded) {
-			AdMobManager.Instance.HideBanner ();
+			//AdMobManager.Instance.HideBanner ();
 		}
 		PieceGenerator.instance.goingBackToMenu = true;
 		GameManager.Instance.gamePaused = true;
@@ -542,7 +541,7 @@ public class MenuManager : MonoBehaviour {
 		//TweenObjects(panelHomeButton, panelHomeButton.GetComponent<PanelScript> ().screenPosition, false,false);
 
 		if (interAdLoaded) {
-			AdMobManager.Instance.ShowInter(); 
+			//AdMobManager.Instance.ShowInter(); 
 		}
 		
 		//AdMobManager.Instance.HideBanner(); 
